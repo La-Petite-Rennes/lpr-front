@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+  <!-- Username -->
+  <mat-form-field floatLabel="never">
+    <input
+      matInput
+      placeholder="Login"
+      formControlName="username"
+      />
+
+    <mat-error>Le champ ne peut pas être vide</mat-error>
+  </mat-form-field>
+
+  <!-- Password -->
+  <mat-form-field floatLabel="never">
+    <input
+      type="password"
+      matInput
+      placeholder="Mot de passe"
+      formControlName="password"
+      />
+
+    <mat-error>Le champ ne peut pas être vide</mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" [ogiLoadingButton]="loading">Se Connecter</button>
+
+</form>
