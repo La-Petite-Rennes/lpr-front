@@ -20,15 +20,13 @@ export class AdherentsTableComponent implements OnInit {
 
   constructor(
     private adherentService: AdherentService,
-    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.dataSource = new AdherentsDataSource(
       this.adherentService,
       this.paginator,
-      this.filter,
-      this.cd
+      this.filter
     );
   }
 }

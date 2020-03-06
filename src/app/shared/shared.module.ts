@@ -9,6 +9,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {AdherentService} from './adherent/adherent.service';
+import {ArticleService} from './stock/article.service';
+import {Provider} from './stock/provider.model';
+import {ProviderService} from './stock/provider.service';
 
 @NgModule({
   imports: [
@@ -36,7 +39,9 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        AdherentService
+        AdherentService,
+        ArticleService,
+        ProviderService
       ]
     };
   }

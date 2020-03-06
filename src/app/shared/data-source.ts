@@ -4,15 +4,11 @@ import {merge, Observable, of} from 'rxjs';
 import {catchError, map, startWith, switchMap, tap} from 'rxjs/operators';
 import {IPageable} from '../core/pagination.model';
 
-export abstract class LprDataSource<T> extends DataSource<T> {
+export abstract class LprDataSource<I, O> extends DataSource<O> {
   isLoading = true;
   errorOccurred: boolean;
 
-  totalElements: number | undefined = 0;
-  pageIndex: number | undefined;
-
   protected constructor(
-    protected cd: ChangeDetectorRef
   ) {
     super();
   }
@@ -24,7 +20,7 @@ export abstract class LprDataSource<T> extends DataSource<T> {
    *
    * @returns Observable that emits a new value when the data changes.
    */
-  abstract connectSource(): Observable<IPageable<T>>;
+  abstract connectSource(): Observable<I>;
 
   /**
    * Watch on these observables to retrieve data (via {@link LprDataSource.connectSource})
@@ -34,37 +30,34 @@ export abstract class LprDataSource<T> extends DataSource<T> {
     return [];
   }
 
-  connect(): Observable<T[]> {
+  connect(): Observable<O[]> {
     return merge(
       ...this.observeOn()
     ).pipe(
       startWith(null),
       tap(() => this.markAsLoading()),
       switchMap(() => this.connectSource()),
-      map((pageable) => {
+      map((data) => {
         this.isLoading = false;
         this.errorOccurred = false;
-        this.totalElements = pageable.totalElements;
-        this.pageIndex = pageable.number;
 
-        this.cd.markForCheck();
-
-        return pageable.content;
+        return this.mapResults(data);
       }),
       catchError(() => {
         this.isLoading = false;
         this.errorOccurred = true;
-
-        this.cd.markForCheck();
 
         return of([]);
       })
     );
   }
 
+  abstract mapResults(input: I): O[];
+
   markAsLoading() {
     this.isLoading = true;
+  }
 
-    this.cd.markForCheck();
+  disconnect() {
   }
 }
