@@ -1,0 +1,17 @@
+<mat-toolbar color="accent">
+  <button mat-button routerLink="/">La Petite Rennes</button>
+
+  <span class="flex"></span>
+
+  <button mat-button routerLink="/articles">Articles</button>
+  <button mat-button routerLink="/adherents">Adhérents</button>
+  <button mat-button [matMenuTriggerFor]="menu">
+    Patrick
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Administration</button>
+    <button mat-menu-item (click)="onLogout()">Déconnexion</button>
+  </mat-menu>
+
+</mat-toolbar>

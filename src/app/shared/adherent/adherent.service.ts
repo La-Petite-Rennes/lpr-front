@@ -1,15 +1,18 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {IPageable, Pagination} from '../../core/pagination.model';
-import {Observable} from 'rxjs';
-import {HttpUtils} from '../http/http.utils';
-import {Adherent} from './adherent.model';
-import {environment} from '../../../environments/environment';
-import {map} from 'rxjs/operators';
-import {JsonConvert, ValueCheckingMode} from 'json2typescript';
-import {Article} from '../stock/article.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { JsonConvert, ValueCheckingMode } from 'json2typescript';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+import { HttpUtils } from '../http/http.utils';
+import { SharedModule } from '../shared.module';
+import { Adherent } from './adherent.model';
+import { environment } from '../../../environments/environment';
+import { IPageable, Pagination } from '../../core/pagination.model';
+
+@Injectable({
+  providedIn: SharedModule
+})
 export class AdherentService {
 
   static RESOURCE = 'adherents';
