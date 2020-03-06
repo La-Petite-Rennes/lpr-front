@@ -1,10 +1,15 @@
 <mat-toolbar color="accent">
-  <button mat-button routerLink="/">La Petite Rennes</button>
+  <img
+    class="logo"
+    src="assets/logo.png"
+    alt="La Petite Rennes"
+    routerLink="/" />
+
+  <button mat-button routerLink="/articles" routerLinkActive="mat-primary">Articles</button>
+  <button mat-button routerLink="/adherents" routerLinkActive="mat-primary">Adhérents</button>
 
   <span class="flex"></span>
 
-  <button mat-button routerLink="/articles">Articles</button>
-  <button mat-button routerLink="/adherents">Adhérents</button>
   <button mat-button [matMenuTriggerFor]="menu">
     Patrick
     <mat-icon>arrow_drop_down</mat-icon>

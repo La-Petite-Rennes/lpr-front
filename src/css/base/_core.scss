@@ -1,0 +1,16 @@
+//----------------------------------------
+//  Core
+//----------------------------------------
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #FAFAFA;
+  color: $primary-text-color;
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}

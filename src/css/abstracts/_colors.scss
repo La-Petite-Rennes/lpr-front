@@ -1,0 +1,88 @@
+//----------------------------------------
+//  Colors
+//----------------------------------------
+
+$white-6-opacity: rgba(white, .06);
+$white-12-opacity: rgba(white, .12);
+$white-87-opacity: rgba(white, .87);
+
+$black-6-opacity: rgba(black, .06);
+$black-12-opacity: rgba(black, .12);
+$black-22-opacity: rgba(black, .22);
+$black-25-opacity: rgba(black, .25);
+$black-87-opacity: rgba(black, .87);
+
+$lpr-primary: (
+  50: #FFECED,
+  100: #FFD0D1,
+  200: #FFB1B3,
+  300: #FE9295,
+  400: #FE7A7E,
+  500: #FE6367,
+  600: #FE5B5F,
+  700: #FE5154,
+  800: #FE474A,
+  900: #FD3539,
+  A100: #FFFFFF,
+  A200: #FFFFFF,
+  A400: #FFDEDE,
+  A700: #FFC4C5,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: $black-87-opacity,
+    600: $black-87-opacity,
+    700: $black-87-opacity,
+    800: #FFFFFF,
+    900: #FFFFFF,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: $black-87-opacity
+  )
+);
+
+$lpr-accent: (
+  50: #E8E9EC,
+  100: #C5C7CF,
+  200: #9EA2AF,
+  300: #777D8E,
+  400: #596176,
+  500: #3C455E,
+  600: #363E56,
+  700: #2E364C,
+  800: #272E42,
+  900: #1A1F31,
+  A100: #7591FF,
+  A200: #3C455E,
+  A400: #0F3FFF,
+  A700: #0031F5,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: #FFFFFF,
+    400: #FFFFFF,
+    500: #FFFFFF,
+    600: #FFFFFF,
+    700: #FFFFFF,
+    800: #FFFFFF,
+    900: #FFFFFF,
+    a100: $black-87-opacity,
+    A200: #FFFFFF,
+    A400: #FFFFFF,
+    A700: #FFFFFF
+  )
+);
+
+
+$primary-color:        map_get($lpr-primary, 500);
+$primary-color-text:   #FFFFFF;
+$accent-color:         map_get($lpr-accent, 500);
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+$error-color:          #F44336;

@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+//----------------------------------------
+//  La Petite Rennes
+//----------------------------------------
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Abstracts
+@import 'css/abstracts/colors';
+
+// Base
+@import 'css/base/core';
+
+// Vendors
+@import 'css/vendors/angular-material';

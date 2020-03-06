@@ -4,6 +4,13 @@
 
 .mat-toolbar {
 
+  .logo {
+    height: 26px;
+    cursor: pointer;
+    outline: none;
+    margin-right: 16px;
+  }
+
   .flex {
     flex: 1;
   }
