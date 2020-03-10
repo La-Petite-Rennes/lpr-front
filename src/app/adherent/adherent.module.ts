@@ -12,6 +12,10 @@ import { SharedModule } from '../shared/shared.module';
 import { AdherentComponent } from './adherent.component';
 import { AdherentsTableComponent } from './adherents-table/adherents-table.component';
 import { AdherentRoute } from './adherent.routing';
+import { AdherentNewComponent } from './adherent-new/adherent-new.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -24,11 +28,16 @@ import { AdherentRoute } from './adherent.routing';
     MatIconModule,
     MatButtonModule,
     SharedModule,
-    AdherentRoute
+    AdherentRoute,
+    MatDialogModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule
   ],
   declarations: [
     AdherentComponent,
-    AdherentsTableComponent
+    AdherentsTableComponent,
+    AdherentNewComponent
   ]
 })
 export class AdherentModule { }

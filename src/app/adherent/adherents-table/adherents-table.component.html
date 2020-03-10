@@ -1,3 +1,7 @@
+<div class="newAdherent">
+  <a mat-flat-button routerLink="./nouveau" color="accent">Nouvel·le adhérent·e</a>
+</div>
+
 <mat-form-field appearance="fill" class="search">
   <mat-label>Filtrer</mat-label>
   <input matInput [formControl]="filter" />
@@ -26,7 +30,7 @@
 
     <ng-container matColumnDef="dateDerniereAdhesion">
       <mat-header-cell *matHeaderCellDef> Date d'adhésion </mat-header-cell>
-      <mat-cell *matCellDef="let adherent"> {{adherent.lastAdhesion}} </mat-cell>
+      <mat-cell *matCellDef="let adherent"> {{adherent.lastAdhesion | date : 'dd/MM/yyyy'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="estBenevole">

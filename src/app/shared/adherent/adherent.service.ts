@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { JsonConvert, ValueCheckingMode } from 'json2typescript';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {JsonConvert, ValueCheckingMode} from 'json2typescript';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { HttpUtils } from '../http/http.utils';
-import { SharedModule } from '../shared.module';
-import { Adherent } from './adherent.model';
-import { environment } from '../../../environments/environment';
-import { IPageable, Pagination } from '../../core/pagination.model';
+import {HttpUtils} from '../http/http.utils';
+import {SharedModule} from '../shared.module';
+import {Adherent} from './adherent.model';
+import {environment} from '../../../environments/environment';
+import {IPageable, Pagination} from '../../core/pagination.model';
+import {NouvelAdherent} from './new-adherent.model';
 
 @Injectable({
   providedIn: SharedModule
@@ -40,5 +41,12 @@ export class AdherentService {
           return data;
         })
       );
+  }
+
+  create(adherent: NouvelAdherent): Observable<void> {
+    const jsonConvert = new JsonConvert();
+    jsonConvert.valueCheckingMode = ValueCheckingMode.ALLOW_NULL;
+
+    return this.http.post<void>(`${environment.baseUrl}/${AdherentService.RESOURCE}`, jsonConvert.serialize(adherent));
   }
 }

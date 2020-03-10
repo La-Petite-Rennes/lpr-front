@@ -1,0 +1,49 @@
+//----------------------------------------
+//  Loading button
+//----------------------------------------
+
+$loading-button-max-width: 95%;
+$loading-button-duration: 2s;
+
+//----------------------------------------
+
+.lpr-loading-button {
+
+  &.mat-primary:before,
+  &.mat-primary:after {
+    background-color: $primary-color;
+  }
+
+  &.mat-accent:before,
+  &.mat-accent:after {
+    background-color: $accent-color;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+  }
+
+}
+
+.lpr-loading-button:before {
+  width: 100%;
+  opacity: .4;
+}
+
+.lpr-loading-button:after {
+  width: $loading-button-max-width;
+  animation: loading $loading-button-duration;
+
+  @keyframes loading {
+
+    from { width: 0; }
+    to { width: $loading-button-max-width; }
+
+  }
+
+}

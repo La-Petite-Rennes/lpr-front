@@ -1,0 +1,108 @@
+<h1>Créer un·e nouvel·le adhérent·e</h1>
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="newAdherentForm">
+    <div class="formGroup">
+      <!-- Prénom -->
+      <mat-form-field>
+        <mat-label>Prénom</mat-label>
+        <input matInput required formControlName="prenom">
+        <mat-error>
+          <div *ngIf="prenom.errors?.required">Le champ ne peut pas être vide</div>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Nom -->
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput required formControlName="nom">
+        <mat-error>
+          <div *ngIf="nom.errors?.required">Le champ ne peut pas être vide</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <h2>Coordonnées</h2>
+    <!-- Adresse -->
+    <mat-form-field>
+      <mat-label>Adresse</mat-label>
+      <input matInput formControlName="adresse">
+    </mat-form-field>
+
+    <div class="formGroup">
+      <!-- Code Postal -->
+      <mat-form-field>
+        <mat-label>Code Postal</mat-label>
+        <input matInput formControlName="codePostal">
+      </mat-form-field>
+
+      <!-- Ville -->
+      <mat-form-field>
+        <mat-label>Ville</mat-label>
+        <input matInput formControlName="ville">
+      </mat-form-field>
+    </div>
+
+    <!-- Email -->
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="email.hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Téléphone -->
+    <mat-form-field>
+      <mat-label>Téléphone</mat-label>
+      <input matInput formControlName="telephone">
+    </mat-form-field>
+
+    <h2>Adhésion</h2>
+    <!-- Type d'adhésion -->
+    <mat-form-field>
+      <mat-label>Type d'adhésion</mat-label>
+      <mat-select required formControlName="typeAdhesion">
+        <mat-option value="Simple">Simple</mat-option>
+        <mat-option value="Famille">Famille</mat-option>
+        <mat-option value="Soutien">Soutien</mat-option>
+        <mat-option value="TitreGracieux">A titre gracieux</mat-option> <!-- TODO Limiter aux admins -->
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Prix de l'adhésion -->
+    <mat-form-field>
+      <mat-label>Prix de l'adhésion</mat-label>
+      <input matInput type="number" min="1" formControlName="prixAdhesion">
+    </mat-form-field>
+
+    <!-- Date de l'adhésion -->
+    <mat-form-field>
+      <mat-label>Date d'adhésion</mat-label>
+      <input matInput required type="date" formControlName="dateAdhesion">
+    </mat-form-field>
+
+    <h2>Bénévolat</h2>
+    <!-- Bénévole -->
+    <mat-checkbox formControlName="benevole">Bénévole</mat-checkbox>
+
+    <!--Remarque bénévolat-->
+    <mat-form-field>
+      <mat-label>Remarque bénévolat</mat-label>
+      <input matInput type="text" formControlName="remarqueBenevolat">
+    </mat-form-field>
+
+    <h2>Autres</h2>
+    <!--Autre remarque-->
+    <mat-form-field>
+      <mat-label>Autre remarque</mat-label>
+      <input matInput type="text" formControlName="autreRemarque">
+    </mat-form-field>
+  </div>
+
+  <div class="actions">
+    <button type="button" mat-flat-button [disabled]="loading" routerLink="/adherents">Annuler</button>
+    <button mat-flat-button [lprLoadingButton]="loading" color="primary">Enregistrer</button>
+  </div>
+</form>
