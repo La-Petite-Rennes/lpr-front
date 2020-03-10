@@ -1,0 +1,47 @@
+<h1>Nouvelle vente</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="lprForm">
+    <!-- Recherche adhérent -->
+    <mat-form-field>
+      <mat-label>Adhérent·e</mat-label>
+      <input matInput [matAutocomplete]="auto" formControlName='adherent'>
+
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayAdherentSelected">
+        <mat-option *ngFor="let ad of adherents" [value]="ad">
+          {{ ad.prenom + ' ' + ad.nom }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Date de vente -->
+    <mat-form-field>
+      <mat-label>Date de vente</mat-label>
+      <input matInput required type="date" formControlName="dateVente">
+    </mat-form-field>
+
+
+    <!-- Sélection article -->
+    <mat-form-field>
+      <mat-label>Article</mat-label>
+      <input matInput [matAutocomplete]="autoArticles" formControlName='article'>
+
+      <mat-autocomplete #autoArticles="matAutocomplete" [displayWith]="displayArticleSelected">
+        <mat-option *ngFor="let article of filteredArticles | async" [value]="article">
+          {{ article.nom }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Quantité -->
+    <mat-form-field>
+      <mat-label>Quantité</mat-label>
+      <input matInput required type="number" min="1" formControlName="quantite">
+    </mat-form-field>
+  </div>
+
+  <div class="actions">
+    <button type="button" mat-flat-button [disabled]="loading" routerLink="/adherents">Annuler</button>
+    <button mat-flat-button [lprLoadingButton]="loading" color="primary">Enregistrer</button>
+  </div>
+</form>

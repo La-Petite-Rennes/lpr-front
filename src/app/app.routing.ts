@@ -20,6 +20,10 @@ const appRoutes: Routes = [
         loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
       },
       {
+        path: 'ventes',
+        loadChildren: () => import('./vente/vente.module').then(m => m.VenteModule)
+      },
+      {
         path: '',
         component: HeaderComponent,
         outlet: 'header'
